@@ -1,1 +1,39 @@
+import java.util.Arrays;
 
+public class WorkShop {
+    public static void main(String[] args) {
+        Friend[] friends = new Friend[]{
+                new Friend("Dima",20, "True", 20),
+                new Friend("Danya",23, "False", 45),
+                new Friend("Nikita",17, "False", 50),
+                new Friend("Artem",21, "True", 10),
+                new Friend("Kirill",22, "True", 20),
+        };
+
+        System.out.println("My friends: " + Arrays.toString(friends));
+    }
+}
+
+class Friend {
+    private String name;
+    private int age;
+    private String isFriendFromSchool;
+    private float hoursSpentTogetherLastWeek;
+
+    public Friend(String name, int age, String isFriendFromSchool, float hoursSpentTogetherLastWeek) {
+        this.name = name;
+        this.age = age;
+        this.isFriendFromSchool = isFriendFromSchool;
+        this.hoursSpentTogetherLastWeek = hoursSpentTogetherLastWeek;
+    }
+
+    @Override
+    public String toString() {
+        return "Friend{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", isFriendFromSchool=" + isFriendFromSchool +
+                ", hoursSpentTogetherLastWeek=" + hoursSpentTogetherLastWeek +
+                '}';
+    }
+}
