@@ -1,1 +1,45 @@
+public class Main {
+    public static void main(String[] args) {
+        Student alex = new Student();
+        Docent lebedenko = new Docent();
+
+        lebedenko.age = 44;
+        lebedenko.name = "Lebedenko";
+        lebedenko.faculty = "MKMT";
+
+        alex.age = 19;
+        alex.name = "Alex";
+        alex.faculty = "MKMT";
+        alex.courseOfStudy = 3;
+        alex.group = "MKIS35";
+
+        lebedenko.sayWhoAmI();
+        alex.sayWhoAmI();
+    }
+}
+
+public abstract class Human {
+    int age;
+    String name;
+    public abstract void sayWhoAmI();
+}
+
+public class Student extends Human{
+    int courseOfStudy;
+    String faculty;
+    String group;
+
+    public void sayWhoAmI() {
+        System.out.println("Здравствуйте, я " + this.name + ", мне " + this.age + " и я студент группы " + this.group);
+    }
+}
+
+public class Docent extends Human{
+    int experience;
+    String faculty;
+
+    public void sayWhoAmI() {
+        System.out.println("Здравствуйте, я " + this.name + ", мне " + this.age + " и я доцент факультета " + this.faculty);
+    }
+}
 
