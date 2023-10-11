@@ -29,3 +29,26 @@ public class Circle {
             this.radius = radius;
     }
 }
+
+
+//а также дополнен тест на проверку сеттера радиуса: 
+private void testSetRadius() {
+        Circle circle = new Circle(1);
+        if (!compareDouble(circle.getRadius(), 1)) {
+            System.out.println("testSetRadius: FAILURE: expected getRadius() = 1, got " + circle.getRadius());
+            return;
+        }
+        circle.setRadius(2.0);
+        if (!compareDouble(circle.getRadius(), 2)) {
+            System.out.println("testSetRadius: FAILURE: expected r = 2, got " + circle.getRadius());
+            return;
+        }
+        circle.setRadius(0);
+        if(compareDouble(circle.getRadius(), 0))
+        {
+            System.out.println("testSetRadius: FAILURE: r = " + circle.getRadius());
+        }
+        else {
+            System.out.println("testSetRadius: OK");
+        }
+    }
