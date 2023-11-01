@@ -1,0 +1,91 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        testTime();
+        testReverse();
+        testClearString();
+    }
+
+    public static void sieve(ArrayList<String> strings){
+        Set<String> wef = new HashSet<>(strings);
+        strings.clear();
+        strings.addAll(wef);
+    }
+
+    public static HashMap<String, Integer> reverseValuesAndKeys(HashMap<Integer, String> examples)
+    {
+        if(examples.isEmpty())
+            return null;
+        HashMap<String,Integer> answer = new HashMap<>();
+
+        for(Map.Entry<Integer,String> input: examples.entrySet()){
+            answer.put(input.getValue(),input.getKey());
+        }
+        return answer;
+    }
+
+    public static void testReverse(){
+        System.out.println("\nStart reverse test");
+        HashMap<Integer, String> numbers = new HashMap<>();
+
+        numbers.put(123456789, "First");
+        numbers.put(12345678, "Second");
+        numbers.put(1234567, "Third");
+        numbers.put(123456, "Fourth");
+        numbers.put(12345, "Fifth");
+
+        System.out.println(numbers);
+        System.out.println(reverseValuesAndKeys(numbers));
+    }
+
+    public static void testClearString(){
+        System.out.println("\nStart clear string test");
+        ArrayList<String> testString = new ArrayList<>();
+        testString.add("vova");
+        testString.add("vova");
+        testString.add("misha");
+        testString.add("gena");
+        System.out.println(testString);
+        sieve(testString);
+        System.out.println(testString);
+    }
+
+    public static void testTime(){
+        System.out.println("\nStart time test");
+        int n = 1000000;
+        int iter = 1000;
+        Random random = new Random();
+
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for(int i =0; i < n; i++){
+            arrayList.add(random.nextInt());
+        }
+
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        for(int i = 0; i < n; i++){
+            linkedList.add(random.nextInt());
+        }
+
+        long startTimeArrayList = System.currentTimeMillis();
+        for(int i =0; i < iter; i++){
+            int index = random.nextInt(n);
+            int value = arrayList.get(index);
+        }
+        long endTimeArrayList = System.currentTimeMillis();
+        long resultTimeArrayList = endTimeArrayList - startTimeArrayList;
+        System.out.println("Время выполнения для ArrayList: " + resultTimeArrayList);
+
+        long startTimeLinkedList = System.currentTimeMillis();
+        for(int i = 0; i < iter; i++){
+            int index = random.nextInt(n);
+            int value = linkedList.get(index);
+        }
+        long endTimeLinkedList = System.currentTimeMillis();
+        long resultTimeLinkedList = endTimeLinkedList - startTimeLinkedList;
+        System.out.println("Время выполнения для LinkedList: " + resultTimeLinkedList);
+
+    }
+}
+
+
