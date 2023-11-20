@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> array = new ArrayList<>();
+        for(int i = 0; i < 11; i++)
+            array.add(i);
+        System.out.println(array);
+        System.out.println(getRollingAverage(array,4));
+    }
+
+    public static List<Float> getRollingAverage(ArrayList<Integer> arr, int k) {
+        LinkedList<Integer> subList = new LinkedList<>();
+        LinkedList<Float> resList = new LinkedList<>();
+        float value = 0;
+        for(int i = 0; i < k; i++){
+            subList.add(arr.get(i));
+            value += arr.get(i);
+        }
+        resList.add(value/k);
+
+        for(int i = k; i < arr.size(); i++){
+            subList.add(arr.get(i));
+            value += -subList.remove() +arr.get(i);
+            resList.add(value/k);
+        }
+        return resList;
+    }
+}
